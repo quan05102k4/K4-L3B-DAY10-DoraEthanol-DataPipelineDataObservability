@@ -14,7 +14,7 @@
 | STT | Họ và tên | MSSV | Vai trò chính | Module/deliverable sở hữu |
 | --: | --- | --- | --- | --- |
 | 1 | Nguyễn Minh Quân | 2A202602490 | Trưởng nhóm / Pipeline Integrator | `core/config.py`, `core/utils.py`, `pipelines/phase1.py`, `pipelines/corruption_flow.py`, `script/`, `data/reports/` |
-| 2 | Trần Anh Đăng | 2A202602992 | Data Foundation & Recovery | `ingestion/crossref.py`, `ingestion/cleaning.py`, `ingestion/corruption.py`, `data/raw/`, `data/clean/` |
+| 2 | Trần Anh Đăng | 2A202602992 | Data Foundation & Recovery Source (nguồn dữ liệu phục hồi) | `ingestion/crossref.py`, `ingestion/cleaning.py`, `ingestion/corruption.py`, `data/raw/`, `data/clean/` |
 | 3 | Nguyễn Khánh Đô | 2A202602687 | RAG & Vector Index | `retrieval/embeddings.py`, `retrieval/index.py`, `retrieval/qa.py`, `retrieval/agent.py`, `data/chroma/`, `data/embeddings/` |
 | 4 | Bùi Lê Gia Huy | 2A202602607 | Observability & Evaluation | `observability/quality.py`, `observability/reporting.py`, `evaluation/testset.py`, `evaluation/metrics.py`, `data/quality/`, `data/eval/`, `data/results/` |
 
@@ -59,7 +59,7 @@ Crossref REST API (fallback: data/raw/crossref_response.json)
 | Embedding/index | `text_for_embedding` | MiniLM-L6-v2 normalize, ChromaDB cosine, 3 collection tách biệt | `data/chroma/`, `data/embeddings/papers_embeddings*.json` | Nguyễn Khánh Đô |
 | Evaluation | `test_set.json` + index | Retrieval Hit Rate, Token F1, LLM judge (có fallback heuristic) | `data/results/*_metrics.json`, `*_answers.json` | Bùi Lê Gia Huy |
 | Observability | clean/corrupted/repaired dataframe | GX 1.x Ephemeral Context 4 expectations + Freshness SLA 25% | `data/quality/*_quality_report.json`, `*_freshness_report.json` | Bùi Lê Gia Huy |
-| Corruption/repair | clean dataframe + raw snapshot | 6 kịch bản có seed; repair dựng lại từ raw records | `data/results/corruption_log.json`, `data/clean/papers_clean_corrupted|repaired.*` | Trần Anh Đăng (corruption) + Nguyễn Minh Quân (repair flow) |
+| Corruption/repair | clean dataframe + raw snapshot | 6 kịch bản có seed; repair dựng lại từ raw records | `data/results/corruption_log.json`, `data/clean/papers_clean_corrupted|repaired.*` | Trần Anh Đăng (corruption + nguồn phục hồi: `load_raw_records`, `build_clean_dataframe`) + Nguyễn Minh Quân (repair flow: `repair_from_raw_snapshot`) |
 | Orchestration | Settings + toàn bộ module | Thứ tự 6 bước mỗi phase, in log tiến trình, gọi sinh report | `data/reports/phase1_report.md`, `data/reports/corruption_report.md` | Nguyễn Minh Quân |
 
 ## 4. Cách tái hiện kết quả

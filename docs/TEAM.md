@@ -13,7 +13,7 @@
 | STT | Họ và tên | MSSV | Email | Vai trò & Phân công công việc | Báo cáo cá nhân |
 |---:|---|---|---|---|---|
 | 1 | Nguyễn Minh Quân | 2A202602490 | quan05102k4@gmail.com | Trưởng nhóm / Pipeline Integrator (`core/`, `phase1.py`, `corruption_flow.py`) | `report/individual_2A202602490_NguyenMinhQuan.md` |
-| 2 | Trần Anh Đăng | 2A202602992 | trananhdang2004@gmail.com | Data Foundation & Recovery (`crossref.py`, `cleaning.py`, `corruption.py`, raw data) | `report/individual_2A202602992_TranAnhDang.md` |
+| 2 | Trần Anh Đăng | 2A202602992 | trananhdang2004@gmail.com | Data Foundation & Recovery Source — nguồn dữ liệu phục hồi (`crossref.py`, `cleaning.py`, `corruption.py`, raw data) | `report/individual_2A202602992_TranAnhDang.md` |
 | 3 | Nguyễn Khánh Đô | 2A202602687 | nguyenkhanhdo27@gmail.com | RAG & Vector Index (`retrieval/index.py`, `embeddings.py`, `qa.py`, `agent.py`, ChromaDB) | `report/individual_2A202602687_NguyenKhanhDo.md` |
 | 4 | Bùi Lê Gia Huy | 2A202602607 | builegiahuywork@gmail.com | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, `metrics.py`, `reporting.py`) | `report/individual_2A202602607_BuiLeGiaHuy.md` |
 
@@ -61,7 +61,7 @@ Ràng buộc kỹ thuật: commit theo thứ tự trên (ingestion → retrieval
   - Hiểu sâu về Idempotent Pipeline: repair dựng lại dataset từ snapshot thô thay vì vá từng ô hỏng, xác minh bằng `idempotent_rerun_identical` và `matches_baseline` đều `True`.
 
 ### ## Trần Anh Đăng - 2A202602992
-- **Vai trò:** Phụ trách Ingestion, Làm sạch, Làm bẩn & Phục hồi dữ liệu.
+- **Vai trò:** Phụ trách Ingestion, Làm sạch, Làm bẩn & **nguồn dữ liệu phục hồi** — sở hữu snapshot thô bất biến và hàm `build_clean_dataframe()` dùng để dựng lại dataset; luồng gọi repair (`repair_from_raw_snapshot()` trong `corruption_flow.py`) do Trưởng nhóm sở hữu.
 - **Công việc chi tiết đã hoàn thành:**
   - Xây dựng module thu thập Crossref API với retry/backoff và fallback offline trong `src/ingestion/crossref.py`; bảo toàn 2 raw artifact (24 record).
   - Chuẩn hóa schema 13 cột, tính `age_days`, ghép `text_for_embedding` 5 phần trong `src/ingestion/cleaning.py` (24/24 record hợp lệ, `dropped_rows=0`).
