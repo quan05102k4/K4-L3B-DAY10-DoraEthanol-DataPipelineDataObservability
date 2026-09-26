@@ -18,6 +18,10 @@ from retrieval.llm import build_llm
 from retrieval.qa import answer_question
 
 
+# Dau hieu nhan biet verdict duoc sinh boi heuristic du phong (khong phai LLM).
+FALLBACK_JUDGE_REASONING = "Fallback heuristic judge used because the LLM evaluator was unavailable."
+
+
 class JudgeVerdict(BaseModel):
     score: int = Field(ge=1, le=5)
     correct: bool
@@ -66,7 +70,7 @@ Return:
         return JudgeVerdict(
             score=score,
             correct=score >= 3,
-            reasoning="Fallback heuristic judge used because the LLM evaluator was unavailable.",
+            reasoning=FALLBACK_JUDGE_REASONING,
         )
 
 

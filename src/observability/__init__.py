@@ -1,2 +1,2 @@
-from .quality import build_freshness_report, run_data_quality_checks
+from .quality import build_freshness_report, evaluate_freshness_sla, run_data_quality_checks
 from .reporting import generate_corruption_report, generate_phase1_report

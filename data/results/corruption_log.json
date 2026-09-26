@@ -1,0 +1,377 @@
+{
+  "generated_at": "2026-09-26T04:30:43.081089+00:00",
+  "seed": 20261010,
+  "row_index_reference": "baseline_row = chi so row trong dataset sach dau vao (papers_clean).",
+  "source_rows": 24,
+  "corrupted_rows": 21,
+  "rows_removed": 5,
+  "rows_added": 2,
+  "rows_modified": 13,
+  "modified_rows": [
+    5,
+    6,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    19,
+    20,
+    21
+  ],
+  "scenarios_applied": 6,
+  "scenario_names": [
+    "drop_latest_records",
+    "blank_summary",
+    "inject_noise",
+    "truncate_title",
+    "stale_date",
+    "duplicate_rows"
+  ],
+  "total_change_records": 22,
+  "affected_paper_ids": [
+    "10.1145/3637528.3671802",
+    "10.1145/3637528.3671804",
+    "10.1145/3637528.3671805",
+    "10.1145/3637528.3671806",
+    "10.1145/3637528.3671807",
+    "10.1145/3637528.3671808",
+    "10.1145/3637528.3671809",
+    "10.1145/3637528.3671811",
+    "10.1145/3637528.3671812",
+    "10.1145/3637528.3671814",
+    "10.1145/3637528.3671815",
+    "10.1145/3637528.3671816",
+    "10.1145/3637528.3671817",
+    "10.1145/3637528.3671818",
+    "10.1145/3637528.3671819",
+    "10.1145/3637528.3671820",
+    "10.1145/3637528.3671821",
+    "10.1145/3637528.3671823",
+    "10.1145/3637528.3671824"
+  ],
+  "scenarios": [
+    {
+      "id": 1,
+      "name": "drop_latest_records",
+      "label": "Bo 20% bai bao moi nhat",
+      "params": {
+        "ratio": 0.2,
+        "rows_selected": 5
+      },
+      "expected_gate_impact": "Row count giam va mat tri thuc moi nhat -> retrieval hit rate tut.",
+      "rows_affected": 5,
+      "paper_ids": [
+        "10.1145/3637528.3671802",
+        "10.1145/3637528.3671804",
+        "10.1145/3637528.3671807",
+        "10.1145/3637528.3671808",
+        "10.1145/3637528.3671812"
+      ],
+      "records": [
+        {
+          "action": "removed",
+          "baseline_row": 0,
+          "paper_id": "10.1145/3637528.3671812",
+          "column": null,
+          "before": "Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines",
+          "after": null,
+          "note": "published=2026-07-22 (nam trong nhom moi nhat)"
+        },
+        {
+          "action": "removed",
+          "baseline_row": 1,
+          "paper_id": "10.1145/3637528.3671808",
+          "column": null,
+          "before": "Multi-Agent Consensus for High-Stakes Fact Verification",
+          "after": null,
+          "note": "published=2026-07-19 (nam trong nhom moi nhat)"
+        },
+        {
+          "action": "removed",
+          "baseline_row": 2,
+          "paper_id": "10.1145/3637528.3671804",
+          "column": null,
+          "before": "Freshness SLAs for Real-Time LLM Knowledge Augmentation",
+          "after": null,
+          "note": "published=2026-07-05 (nam trong nhom moi nhat)"
+        },
+        {
+          "action": "removed",
+          "baseline_row": 3,
+          "paper_id": "10.1145/3637528.3671807",
+          "column": null,
+          "before": "Synthetic Corruption Testing: Stress-Testing Vector Search Robustness",
+          "after": null,
+          "note": "published=2026-06-25 (nam trong nhom moi nhat)"
+        },
+        {
+          "action": "removed",
+          "baseline_row": 4,
+          "paper_id": "10.1145/3637528.3671802",
+          "column": null,
+          "before": "Data Observability and Quality Gates for Production RAG Systems",
+          "after": null,
+          "note": "published=2026-06-12 (nam trong nhom moi nhat)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "blank_summary",
+      "label": "Xoa trang summary",
+      "params": {
+        "ratio": 0.15,
+        "rows_selected": 3
+      },
+      "expected_gate_impact": "ExpectColumnValueLengthsToBeBetween(summary, min=30) FAIL.",
+      "rows_affected": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671814",
+        "10.1145/3637528.3671818",
+        "10.1145/3637528.3671823"
+      ],
+      "records": [
+        {
+          "action": "modified",
+          "baseline_row": 6,
+          "paper_id": "10.1145/3637528.3671823",
+          "column": "summary",
+          "before": "An extended empirical study on ense vector search excels at conceptual similarity but struggles with exact acronyms and serial numbers. Reciprocal Rank Fusion o... (+108 chars)",
+          "after": "",
+          "note": "summary_chars 268 -> 0"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 12,
+          "paper_id": "10.1145/3637528.3671818",
+          "column": "summary",
+          "before": "An extended empirical study on onnecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes... (+115 chars)",
+          "after": "",
+          "note": "summary_chars 275 -> 0"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 16,
+          "paper_id": "10.1145/3637528.3671814",
+          "column": "summary",
+          "before": "An extended empirical study on ilent data corruption in RAG pipelines degrades LLM answer faithfulness without throwing runtime errors. We introduce automated q... (+136 chars)",
+          "after": "",
+          "note": "summary_chars 296 -> 0"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "inject_noise",
+      "label": "Chen chuoi rac vao summary",
+      "params": {
+        "ratio": 0.2,
+        "rows_selected": 3,
+        "snippets": [
+          "[[&#xFFFD;&#xFFFD;]]",
+          "<<<NULL>>>",
+          "@@@###$$$%%%",
+          "\\x00\\x01\\x02 ?????",
+          "0xDEADBEEF ||| ###"
+        ]
+      },
+      "expected_gate_impact": "Summary ban -> embedding lech ngu nghia, token F1 va judge score giam.",
+      "rows_affected": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671815",
+        "10.1145/3637528.3671817",
+        "10.1145/3637528.3671819"
+      ],
+      "records": [
+        {
+          "action": "modified",
+          "baseline_row": 11,
+          "paper_id": "10.1145/3637528.3671819",
+          "column": "summary",
+          "before": "An extended empirical study on e introduce an automated fuzzing suite that corrupts text chunks by injecting noise, truncating titles, and blanking summaries. E... (+115 chars)",
+          "after": "An extended empirical study on e introduce an automated fuzzing suite that corrupts text chunks by injecting noise, truncating titles, an @@@###$$$%%% d blankin... (+142 chars)",
+          "note": "chen @@@###$$$%%% o giua va @@@###$$$%%% o cuoi"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 13,
+          "paper_id": "10.1145/3637528.3671817",
+          "column": "summary",
+          "before": "An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge... (+115 chars)",
+          "after": "An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1 @@@###$$$%%% , and mod... (+140 chars)",
+          "note": "chen @@@###$$$%%% o giua va <<<NULL>>> o cuoi"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 15,
+          "paper_id": "10.1145/3637528.3671815",
+          "column": "summary",
+          "before": "An extended empirical study on oft-deletions in vector databases leave orphaned embeddings that lead to hallucinations. This paper designs an idempotent index s... (+124 chars)",
+          "after": "An extended empirical study on oft-deletions in vector databases leave orphaned embeddings that lead to hallucinations. This paper designs an  <<<NULL>>> idempo... (+155 chars)",
+          "note": "chen <<<NULL>>> o giua va \\x00\\x01\\x02 ????? o cuoi"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "truncate_title",
+      "label": "Cat title con duoi 8 ky tu",
+      "params": {
+        "ratio": 0.15,
+        "rows_selected": 3,
+        "max_chars": 7
+      },
+      "expected_gate_impact": "Title cut -> ground truth theo title khong match, retrieval hit rate giam.",
+      "rows_affected": 3,
+      "paper_ids": [
+        "10.1145/3637528.3671809",
+        "10.1145/3637528.3671811",
+        "10.1145/3637528.3671824"
+      ],
+      "records": [
+        {
+          "action": "modified",
+          "baseline_row": 5,
+          "paper_id": "10.1145/3637528.3671824",
+          "column": "title",
+          "before": "Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines",
+          "after": "Advance",
+          "note": "title_chars 91 -> 7 (duoi nguong 8)"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 19,
+          "paper_id": "10.1145/3637528.3671811",
+          "column": "title",
+          "before": "Hybrid Search Architectures: Combining BM25 with Dense Representations",
+          "after": "Hybrid",
+          "note": "title_chars 70 -> 6 (duoi nguong 8)"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 21,
+          "paper_id": "10.1145/3637528.3671809",
+          "column": "title",
+          "before": "Chunking Strategies for Technical Documentation Retrieval",
+          "after": "Chunkin",
+          "note": "title_chars 57 -> 7 (duoi nguong 8)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "stale_date",
+      "label": "Lui published ve 365 ngay truoc",
+      "params": {
+        "ratio": 0.3,
+        "rows_selected": 6,
+        "shift_days": 365
+      },
+      "expected_gate_impact": "Stale ratio vuot 0.25 -> Freshness SLA is_fresh = False.",
+      "rows_affected": 6,
+      "paper_ids": [
+        "10.1145/3637528.3671806",
+        "10.1145/3637528.3671811",
+        "10.1145/3637528.3671815",
+        "10.1145/3637528.3671816",
+        "10.1145/3637528.3671820",
+        "10.1145/3637528.3671821"
+      ],
+      "records": [
+        {
+          "action": "modified",
+          "baseline_row": 8,
+          "paper_id": "10.1145/3637528.3671821",
+          "column": "published",
+          "before": "2026-06-09",
+          "after": "2025-06-09",
+          "note": "updated 2026-06-09 -> 2025-06-09; age_days 109 -> 474"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 10,
+          "paper_id": "10.1145/3637528.3671820",
+          "column": "published",
+          "before": "2026-06-08",
+          "after": "2025-06-08",
+          "note": "updated 2026-06-08 -> 2025-06-08; age_days 110 -> 475"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 14,
+          "paper_id": "10.1145/3637528.3671816",
+          "column": "published",
+          "before": "2026-06-04",
+          "after": "2025-06-04",
+          "note": "updated 2026-06-04 -> 2025-06-04; age_days 114 -> 479"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 15,
+          "paper_id": "10.1145/3637528.3671815",
+          "column": "published",
+          "before": "2026-06-03",
+          "after": "2025-06-03",
+          "note": "updated 2026-06-03 -> 2025-06-03; age_days 115 -> 480"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 19,
+          "paper_id": "10.1145/3637528.3671811",
+          "column": "published",
+          "before": "2026-05-14",
+          "after": "2025-05-14",
+          "note": "updated 2026-05-14 -> 2025-05-14; age_days 135 -> 500"
+        },
+        {
+          "action": "modified",
+          "baseline_row": 20,
+          "paper_id": "10.1145/3637528.3671806",
+          "column": "published",
+          "before": "2026-05-02",
+          "after": "2025-05-02",
+          "note": "updated 2026-05-02 -> 2025-05-02; age_days 147 -> 512"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "duplicate_rows",
+      "label": "Nhan doi row de tao trung lap",
+      "params": {
+        "ratio": 0.1,
+        "rows_selected": 2
+      },
+      "expected_gate_impact": "ExpectColumnValuesToBeUnique(paper_id) FAIL.",
+      "rows_affected": 2,
+      "paper_ids": [
+        "10.1145/3637528.3671805",
+        "10.1145/3637528.3671816"
+      ],
+      "records": [
+        {
+          "action": "added",
+          "baseline_row": 24,
+          "paper_id": "10.1145/3637528.3671816",
+          "column": null,
+          "before": null,
+          "after": "Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation",
+          "note": "nhan ban tu baseline row 14 -> paper_id bi trung lap"
+        },
+        {
+          "action": "added",
+          "baseline_row": 25,
+          "paper_id": "10.1145/3637528.3671805",
+          "column": null,
+          "before": null,
+          "after": "Evaluating Retrieval Precision with Token F1 and LLM Judges",
+          "note": "nhan ban tu baseline row 23 -> paper_id bi trung lap"
+        }
+      ]
+    }
+  ]
+}
